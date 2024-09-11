@@ -2,18 +2,18 @@ package main
 
 import (
 	"flag"
-	"io/ioutil"
+	"io"
 	"os"
 	"time"
 
-	"github.com/atotto/clipboard"
+	"github.com/arrufat/clipboard"
 )
 
 func main() {
 	timeout := flag.Duration("t", 0, "Erase clipboard after timeout.  Durations are specified like \"20s\" or \"2h45m\".  0 (default) means never erase.")
 	flag.Parse()
 
-	out, err := ioutil.ReadAll(os.Stdin)
+	out, err := io.ReadAll(os.Stdin)
 	if err != nil {
 		panic(err)
 	}
@@ -31,8 +31,5 @@ func main() {
 		if text == string(out) {
 			err = clipboard.WriteAll("")
 		}
-	}
-	if err != nil {
-		os.Exit(1)
 	}
 }

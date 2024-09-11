@@ -7,7 +7,7 @@ package clipboard_test
 import (
 	"testing"
 
-	. "github.com/atotto/clipboard"
+	. "github.com/arrufat/clipboard"
 )
 
 func TestCopyAndPaste(t *testing.T) {
